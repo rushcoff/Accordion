@@ -7,7 +7,7 @@ import "./Accordion.scss";
 const AccordionItem = ({ title, children }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleKeyPress = e => {
+  const handleHeaderKeyPress = e => {
     e.stopPropagation();
 
     if (e.key === " ") {
@@ -15,14 +15,19 @@ const AccordionItem = ({ title, children }) => {
     }
   };
 
+  const handleHeaderClick = e => {
+    e.stopPropagation();
+
+    setIsOpen(!isOpen);
+  };
+
   return (
     <div
       className={cn("item", { opened: isOpen })}
-      onClick={() => setIsOpen(!isOpen)}
-      onKeyPress={handleKeyPress}
-      tabIndex="1"
+      onKeyPress={handleHeaderKeyPress}
+      tabIndex="0"
     >
-      <div className="header">
+      <div className="header" onClick={handleHeaderClick}>
         <span className="title">{title}</span>
         <span className="icon">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
