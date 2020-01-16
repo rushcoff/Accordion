@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./Accordion.scss";
+import s from "./Accordion.module.scss";
 
 const Accordion = ({ children }) => {
-  return <div className="accordion">{children}</div>;
+  return <div className={s.accordion}>{children}</div>;
 };
 
 export default Accordion;
